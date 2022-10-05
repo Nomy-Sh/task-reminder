@@ -1,6 +1,6 @@
 
 #require_relative "app"
-App.require_common
+#App.require_common
 
 
 firebase_instances = [
@@ -12,4 +12,4 @@ firebase_instances = [
   },
 ]
 
-App.connect_firebase_instances(firebase_instances)
+#App.connect_firebase_instances(firebase_instances)
