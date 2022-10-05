@@ -1,0 +1,99 @@
+
+## CRUD
+
+# Create
+firebase.set(path, {})
+firebase.push(path, {}) # same as set but random child key is enerated each time
+
+# Read
+firebase.set(path, {})
+
+# Update
+firebase.update(path, {})
+
+# Delete
+firebase.delete(path)
+
+
+resp.body
+resp.code
+success?
+
+#############
+task-reminder-nomy-default-rtdb 
+$API_KEY = 10wj1zP1Ym3rIRe5YosUgRboiOSPdGyvSRYR9lS2
+
+############################################
+Firebase data tree structure
+
+task-reminder (root) ('/')
+  task
+    id -> 1
+      name -> 'some_task',
+      desc -> 'about it',
+      time -> 'today @9:00 am Monday',
+      day -> 'Monday',
+      date -> '26-11-2022',  # It is supposed to be done, if a holiday comes on that day, and its office-task then move task to next working day.
+      tags -> ['office'],
+      status -> 'O', 'C',    # O->open/pending , C->close/done
+      entity_type -> 'task',
+      priority -> 1,  # 1..3    1->high(send push_notification+email) 2->(send push_notification)  3->least(send push_notification)
+      created_at (timestamp),
+      modified_at (timestamp)
+    id -> 2
+      name -> 'some_task'
+      desc -> 'about it'
+      time -> 'today @9:00 am Monday'
+      day -> 'Monday'
+      date -> '26-11-2022'
+      tags -> ['office']
+      created_at (timestamp)
+      modified_at (timestamp)
+
+
+  holiday
+    id -> 1
+      name -> 'Eid',
+      desc -> 'about it',
+      time -> 'today @9:00 am Monday',
+      day -> 'Monday',
+      date -> '26-11-2022',
+      tags -> ['office'],
+      holiday_type -> optional/mandatory/weekend, # if tags.include?'office'
+      am_i_working -> 'N',
+      entity_type -> 'holiday',
+      priority -> 1,            # 1..3  #(default all holidays priority 1)
+      created_at (timestamp),
+      modified_at (timestamp)
+
+
+  reminder
+    id -> 1
+      name -> 'some_reminder',   # remind about
+      desc -> 'about it',        # if any specific description
+      time -> 'today @9:00 am Monday',
+      day -> 'Monday',
+      date -> '26-11-2022',
+      tags -> ['office'],
+      entity_type -> 'reminder',
+      priority -> 1,  # 1..3    1->high(send push_notification+email)   3->least(send email)  
+      created_at (timestamp),
+      modified_at (timestamp)
+
+
+{
+  1 => {
+    :id => 1,
+    :name => 'some_task',
+    :desc => 'about it',
+    :time => 'today @9:00 am Monday',
+    :day => 'Monday',
+    :date => '26-11-2022', 
+    :tags => ['office'],
+    :status => 'O',  
+    :entity_type => 'task',
+    :priority => 1,
+    :created_at =>"",
+    :modified_at =>""
+  }
+}
