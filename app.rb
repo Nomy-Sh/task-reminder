@@ -1,5 +1,5 @@
 module App
-  class <<self
+  class << self
 
     attr_reader :root
 
