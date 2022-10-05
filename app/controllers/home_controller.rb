@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   def index
     load_tasks
     @tasks
+    @task_selected = @tasks[0]
   end
 
   def calendar

@@ -8,27 +8,41 @@
     </title>
 </head>
 <body>
-    <h2>
-     home file
-    </h2><br>
-    <%= link_to "calendar", home_calendar_path %>
-    <br><br>
 
+<div class="row">
+  <div class="col-9">
+    <br>
     <% @tasks.each do |t| %>
-        <%= t.dig("created_at") %> <br>
-        <%= t.dig("date") %> <br>
-        <%= t.dig("day") %> <br>
-        <%= t.dig("desc") %> <br>
-        <%= t.dig("entity_type") %> <br>
-        <%= t.dig("id") %> <br>
-        <%= t.dig("modified_at") %> <br>
-        <%= t.dig("name") %> <br>
-        <%= t.dig("priority") %> <br>
-        <%= t.dig("status") %> <br>
-        <%= t.dig("tags") %> <br>
-        <%= t.dig("time") %> <br>
-        <br><br><br><br>
+      <div class="card" style="width: 100%;">
+        <div class="card-body">
+          <h5 class="card-title"><%= t.dig("name") %></h5>
+          <p class="card-text"><%= t.dig("desc") %></p>
+          <a href="#" class="btn btn-primary">Mark as Done</a>
+        </div>
+      </div>  
     <% end %>
+  </div>
+
+  <div class="col-3 bg-info p-2 text-dark bg-opacity-10 vh-100 d-inline-block" >  
+      <b>name : </b><%= @task_selected.dig("name") %> <br>
+      <b>priority : </b><%= @task_selected.dig("priority") %> <br>
+      <b>status : </b><%= @task_selected.dig("status") %> <br>
+      <b>tags : </b><%= @task_selected.dig("tags") %> <br>
+      <b>time : </b><%= @task_selected.dig("time") %> <br>
+      <b>date : </b><%= @task_selected.dig("date") %> <br>
+      <b>day : </b><%= @task_selected.dig("day") %> <br>
+      <b>desc : </b><%= @task_selected.dig("desc") %> <br>
+      <b>entity_type : </b><%= @task_selected.dig("entity_type") %> <br>
+      <b>id : </b><%= @task_selected.dig("id") %> <br>
+      <b>created_at : </b><%= @task_selected.dig("created_at") %> <br>
+      <b>modified_at : </b><%= @task_selected.dig("modified_at") %> <br>
+      
+      <br><br><br><br>
+
+      <button type="button" class="btn btn-success">Edit</button>
+      <button type="button" class="btn btn-danger">Cancel</button>
+  </div>
+</div>
 
 </body>
 </html>
