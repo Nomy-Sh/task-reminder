@@ -10,7 +10,7 @@
 <body>
 
 <div class="row">
-  <div class="col-9">
+  <div class="col-9" style="scroll-behavior: auto; position: sticky;">
     <br>
     <% @tasks.each do |t| %>
       <div class="card" style="width: 100%;">
@@ -19,11 +19,13 @@
           <p class="card-text"><%= t.dig("desc") %></p>
           <a href="#" class="btn btn-primary">Mark as Done</a>
         </div>
-      </div>  
+      </div> 
+      <br>
     <% end %>
+    <br><br>
   </div>
 
-  <div class="col-3 bg-info p-2 text-dark bg-opacity-10 vh-100 d-inline-block" >  
+  <div class="col-3 bg-info p-2 text-dark bg-opacity-10 vh-100 d-inline-block" style="position: sticky; right: 0; top: 0;"  >  
       <b>name : </b><%= @task_selected.dig("name") %> <br>
       <b>priority : </b><%= @task_selected.dig("priority") %> <br>
       <b>status : </b><%= @task_selected.dig("status") %> <br>
