@@ -7,6 +7,7 @@ class HomeController < ApplicationController
   end
 
   def calendar
+    @month = [[1,2,3,4,5,6,7], [1,2,3,4,5,6,7], [1,2,3,4,5,6,7], [1,2,3,4,5,6,7], [1,2,3,4,5,6,7]]
   end
 
   def conn
