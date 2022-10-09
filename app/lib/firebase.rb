@@ -8,7 +8,7 @@ module Firebase
   end
 end
 
-module Ycs
+module Tsk
   class Firebase
     attr_reader :conn, :url, :auth_key, :rdb_path
 
@@ -25,7 +25,6 @@ module Ycs
 
     def connection
       return conn if conn
-      #Ycs::Logger::Base.info "firebase connection"
 
       if url && auth_key && rdb_path
         base_uri = [url, rdb_path].join('/')
@@ -33,5 +32,12 @@ module Ycs
       end
       conn
     end
+
+    def get_tasks_all
+      binding.pry
+      return unless current_user
+      
+    end
+
   end
 end
