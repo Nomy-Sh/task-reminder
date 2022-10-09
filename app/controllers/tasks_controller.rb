@@ -1,4 +1,5 @@
-class TasksController < ApplicationController
+class TasksController < HomeController
+  before_action :set_user_data, only: %i[signup login]
   before_action :set_task, only: %i[ show edit update destroy ]
 
   # GET /tasks or /tasks.json

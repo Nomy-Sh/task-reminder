@@ -16,6 +16,7 @@ module App
       require_constants
       require_files Dir[root_path('app/services/common/*.rb')]
       require_files Dir[root_path('app/lib/**/*.rb')]
+      require_env_constants
       puts "Required basic files."
     end
 
@@ -24,10 +25,17 @@ module App
       puts "No constants as of now"
     end
 
+
+    def require_env_constants
+      return if ENV['firebase_db_url'].present?
+      puts "Can't find environment variables, please make sure 'declare -xp | grep firebase' returns some value."
+      exit
+    end
+
     def connect_firebase_instances(instances)
       instances.each do |config|
-        self.class.send(:attr_reader, :"#{config[:instance]}")
-        instance_variable_set(:"@#{config[:instance]}", Ycs::Firebase.new(config))
+        self.class.send(:attr_reader, :"#{config[:instance]}")  # instance -> firebase instance.
+        instance_variable_set(:"@#{config[:instance]}", Tsk::Firebase.new(config))
       end
     end
 
