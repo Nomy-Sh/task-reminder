@@ -4,7 +4,7 @@ class CreateTasks < ActiveRecord::Migration[7.0]
       t.integer :task_id
       t.string :title
       t.text :desc
-      t.string :time
+      t.time :time
       t.string :day
       t.string :date
       t.string :tags
